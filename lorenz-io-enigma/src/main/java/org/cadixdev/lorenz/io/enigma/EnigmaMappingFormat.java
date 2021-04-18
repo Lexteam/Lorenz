@@ -25,40 +25,26 @@
 
 package org.cadixdev.lorenz.io.enigma;
 
-import org.cadixdev.lorenz.io.MappingsReader;
-import org.cadixdev.lorenz.io.MappingsWriter;
-import org.cadixdev.lorenz.io.TextMappingFormat;
-
-import java.io.Reader;
-import java.io.Writer;
-import java.util.Optional;
-
 /**
- * The Enigma mapping format.
+ * The standard Enigma mapping format.
  *
  * @author Jamie Mansfield
  * @since 0.4.0
  */
-public class EnigmaMappingFormat implements TextMappingFormat {
+public class EnigmaMappingFormat extends AbstractEnigmaMappingFormat {
 
-    @Override
-    public MappingsReader createReader(final Reader reader) {
-        return new EnigmaReader(reader);
+    public EnigmaMappingFormat() {
+        super(true);
     }
 
     @Override
-    public MappingsWriter createWriter(final Writer writer) {
-        return new EnigmaWriter(writer);
-    }
-
-    @Override
-    public Optional<String> getStandardFileExtension() {
-        return Optional.of(EnigmaConstants.STANDARD_EXTENSION);
-    }
-
-    @Override
-    public String toString() {
+    public String getIdentifier() {
         return "enigma";
+    }
+
+    @Override
+    public String getName() {
+        return "Enigma";
     }
 
 }
